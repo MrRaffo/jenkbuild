@@ -1,16 +1,10 @@
 pipeline {
-    agent any
-    options {
-        skipStagesAfterUnstable()
+    agent { 
+        docker { image 'debian' }
     }
 
     stages {
         stage('Docker Build') {
-            agent {
-                docker {
-                    image 'debian'
-                }
-            }
             steps {
                 sh 'apt update -y'
                 sh 'apt upgrade -y'
