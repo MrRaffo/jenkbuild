@@ -1,19 +1,16 @@
 pipeline {
-    agent any
+    agent none
 
     stages {
-        stage('Docker Build') {
-            agent {
-                docker { image 'debian:latest' }
-            }
+        stage('Pre-Build')
+        {
             steps {
-                echo 'hello'
-                sh 'apt update -yq'
-                echo 'update'
-                sh 'apt upgrade -yq'
-                echo 'upgrade'
-                sh 'apt install cmake build-essential -yq'
-                echo 'done'
+                sh 'docker build -t jenkapp'
+            }
+        }
+        stage('Docker Build') {
+            agent jenkapp             
+            steps {
                 sh 'cat $(pwd)'
             }
         }
