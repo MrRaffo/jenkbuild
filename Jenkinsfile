@@ -3,9 +3,11 @@ pipeline {
 
     stages {
         stage('Docker Build') {
+            agent {
+                docker { image 'debian:latest' }
+            }
             steps {
                 echo 'hello'
-                sh 'ping -c 4 google.com'
             }
         }
     }
