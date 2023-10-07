@@ -8,12 +8,13 @@ pipeline {
             }
             steps {
                 echo 'hello'
-                sh 'RUN apt update -yq'
+                sh 'apt update -yq'
                 echo 'update'
-                sh 'RUN apt upgrade -yq'
+                sh 'apt upgrade -yq'
                 echo 'upgrade'
-                sh 'RUN apt install cmake build-essential -yq'
+                sh 'apt install cmake build-essential -yq'
                 echo 'done'
+                sh 'cat $(pwd)'
             }
         }
     }
