@@ -9,12 +9,12 @@ pipeline {
         stage('Pre-Build')
         {
             steps {
-                sh 'cat $(pwd)'
+                sh 'pwd'
             }
         }
         stage('Docker Build') {
             steps {
-                sh 'cat $(pwd)'
+                sh 'ls -l $(pwd)'
             }
         }
     }
