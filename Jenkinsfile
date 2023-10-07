@@ -1,12 +1,15 @@
 pipeline {
-    agent none
+    agent {
+        dockerfile {
+            filename 'Dockerfile'
+        }
+    }
 
     stages {
         stage('Pre-Build')
         {
-            agent { dockerfile }
             steps {
-                sh 'docker build -t jenkapp'
+                sh 'cat $(pwd)''
             }
         }
         stage('Docker Build') {
