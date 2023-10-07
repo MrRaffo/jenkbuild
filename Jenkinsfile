@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Pre-Build')
         {
-            agent dockerfile
+            agent { dockerfile }
             steps {
                 sh 'docker build -t jenkapp'
             }
